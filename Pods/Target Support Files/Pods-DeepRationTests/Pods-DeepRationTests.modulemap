@@ -1,0 +1,6 @@
+framework module Pods_DeepRationTests {
+  umbrella header "Pods-DeepRationTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -50,6 +50,14 @@ class Journal: Decodable {
         return indexOfDate(Date(timeIntervalSinceNow: 0)) != nil
     }
     
+//    var lastEntryBeforeToday: JournalEntry {
+//        if containsEntryForToday {
+//            return entries[entries.count-2]
+//        } else {
+//            return entries[entries.count-1]
+//        }
+//    }
+    
     // Gets index of journal entry with given date
     func indexOfDate(_ date: Date) -> Int? {
         for i in 0..<entries.count {
@@ -64,6 +72,7 @@ class Journal: Decodable {
     // MARK: MAKE THIS SAFE
     func getEntryAt(index: Int) -> JournalEntry {
         // If first entry is not from today, insert a blank
+        if entries.count <= 0 { return JournalEntry() }
         let firstEntry = entries[0]
         let calendar = Calendar.current
         if !calendar.isDateInToday(firstEntry.date) {
@@ -114,7 +123,7 @@ class Journal: Decodable {
             }
             
             entries.forEach {
-                print("Entry at: \($0.date).. \($0.text)")
+                print("Entry at: \($0.date).. \($0.text as Any)")
             }
             entries.forEach({ entry in
                 self.insertOrUpdateNewEntry(entry)

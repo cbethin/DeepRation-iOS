@@ -17,14 +17,64 @@ struct JournalUpdate: Codable {
 
 class DeepRationManager {
     static var shared = DeepRationManager()
+    static var ResourceUpdateNotification = Notification.Name("DeepRationResourceUpdate")
     
     var profile: GIDProfileData?
     var uid: String!
     var journal = Journal()
+    var resources: [Resource] = []
+    
+    /// Triggers DeepRation to update resources
+    func updateResources() {
+        let _ = Journal.shared.numberOfEntries
+        let entryToUse = Journal.shared.entries[1]
+        
+        DeepRationManager.shared.getTopicScores(entry: entryToUse) { (scores, error) in
+            if error != nil {
+                print("ERROR: \(String(describing: error))")
+            } else {
+                DeepRationManager.shared.getResources(scores: scores)
+                print("SCORES: \(scores)")
+            }
+        }
+    }
+    
+    func getResources(scores: [Double]) {
+        do {
+            print("Getting resources")
+            let postBody = try JSONSerialization.data(withJSONObject: ["scores": scores])
+            sendPostRequest(url: "https://us-central1-charlesbethin-62f7c.cloudfunctions.net/getResources", body: postBody) { (data, response, error) in
+                guard error == nil else { print("Error getting reosurces: \(error!)"); return }
+                
+                do {
+                    let resourcesResponse = try JSONDecoder().decode(ResourcesResponse.self, from: data)
+                    self.resources = resourcesResponse.resources
+                    NotificationCenter.default.post(name: DeepRationManager.ResourceUpdateNotification, object: nil)
+                } catch {
+                    print("Error decoding resources: \(error)")
+                }
+            }
+        } catch { print("Error encoding scores in JSON: \(error)") }
+    }
+    
+    func getTopicScores(entry: JournalEntry, completion: @escaping ([Double], Error?)->Void) {
+        do {
+            let postBody = try JSONSerialization.data(withJSONObject: ["text": entry.text ?? ""])
+            sendPostRequest(url: "https://dr.charlesbethin.com/api/getTopicScores", body: postBody) { (data, response, error) in
+                do {
+                    print("Got scores")
+                    let scoresResponse = try JSONDecoder().decode(ScoresResponse.self, from: data)
+                    completion(scoresResponse.scores, nil)
+                } catch {
+                    completion([], error)
+                }
+            }
+        } catch { print("Error getting topic scores: \(error)")}
+    }
     
     func getJournalEntries(limit: Int = 100, completion: @escaping ([JournalEntry], Error?)->Void) {
         do {
-            let postBody = try JSONSerialization.data(withJSONObject: ["uid": uid, "limit": limit])
+            let postBody = try JSONSerialization.data(withJSONObject: ["uid": uid ?? "", "limit": limit])
             sendPostRequest(url: "https://charlesbethin.com/getJournalEntries", body: postBody) { (data, response, error) in
                 do {
                     print("GOT JOURNAL")
@@ -41,6 +91,10 @@ class DeepRationManager {
         do {
             let postBody = try JSONEncoder().encode(JournalUpdate(uid: uid, entry: entry))
             sendPostRequest(url: "https://charlesbethin.com/updateJournalEntry", body: postBody, callback: nil)
+            
+            // Update resources when journal updates
+            self.updateResources()
+            
         } catch { print("Error updating journal: \(error)")}
     }
     

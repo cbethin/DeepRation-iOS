@@ -11,6 +11,11 @@
 		42F28B990E12673427A1C516 /* Pods_DeepRationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F7B81EF348E5699A2E985E /* Pods_DeepRationTests.framework */; };
 		6E8365C990B910F94EEEC65B /* Pods_DeepRation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74DE248E7257FBF666DAB95 /* Pods_DeepRation.framework */; };
 		F003888E21EFD24F00B716EA /* HomeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F003888D21EFD24F00B716EA /* HomeLoginViewController.swift */; };
+		F00945872272026D00093A07 /* ResourcesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00945862272026D00093A07 /* ResourcesResponse.swift */; };
+		F00945892272029000093A07 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00945882272029000093A07 /* Resource.swift */; };
+		F009458B227202C200093A07 /* DeepRationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F009458A227202C200093A07 /* DeepRationResponse.swift */; };
+		F009458D2272093400093A07 /* ScoresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F009458C2272093400093A07 /* ScoresResponse.swift */; };
+		F009458F22720A9C00093A07 /* MyStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F009458E22720A9C00093A07 /* MyStuffViewController.swift */; };
 		F00CB42E21E6EE5E00C285EC /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00CB42D21E6EE5E00C285EC /* CloudKit.framework */; };
 		F03614E521FFD2D6003A09C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F03614E421FFD2D6003A09C4 /* GoogleService-Info.plist */; };
 		F03614E721FFD3D9003A09C4 /* DeepRationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03614E621FFD3D9003A09C4 /* DeepRationManager.swift */; };
@@ -66,6 +71,11 @@
 		C74DE248E7257FBF666DAB95 /* Pods_DeepRation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeepRation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAFFFF74902EAE8DB09CBD3 /* Pods-DeepRationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeepRationTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeepRationTests/Pods-DeepRationTests.release.xcconfig"; sourceTree = "<group>"; };
 		F003888D21EFD24F00B716EA /* HomeLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoginViewController.swift; sourceTree = "<group>"; };
+		F00945862272026D00093A07 /* ResourcesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesResponse.swift; sourceTree = "<group>"; };
+		F00945882272029000093A07 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		F009458A227202C200093A07 /* DeepRationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepRationResponse.swift; sourceTree = "<group>"; };
+		F009458C2272093400093A07 /* ScoresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresResponse.swift; sourceTree = "<group>"; };
+		F009458E22720A9C00093A07 /* MyStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStuffViewController.swift; sourceTree = "<group>"; };
 		F00CB42B21E6EE5000C285EC /* DeepRation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeepRation.entitlements; sourceTree = "<group>"; };
 		F00CB42D21E6EE5E00C285EC /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F03614E421FFD2D6003A09C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -144,6 +154,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F0094584227201FD00093A07 /* DeepRation */ = {
+			isa = PBXGroup;
+			children = (
+				F00945852272020600093A07 /* Responses */,
+				F03614E621FFD3D9003A09C4 /* DeepRationManager.swift */,
+				F00945882272029000093A07 /* Resource.swift */,
+			);
+			path = DeepRation;
+			sourceTree = "<group>";
+		};
+		F00945852272020600093A07 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				F00945862272026D00093A07 /* ResourcesResponse.swift */,
+				F009458A227202C200093A07 /* DeepRationResponse.swift */,
+				F009458C2272093400093A07 /* ScoresResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		F00CB42A21E6EBAD00C285EC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +227,8 @@
 				F05E532F21E5485C00DAEA39 /* Assets.xcassets */,
 				F05E537721E599C700DAEA39 /* JournalEntryViewController.swift */,
 				F05E536121E54BDD00DAEA39 /* JournalEntryCell.swift */,
-				F03614E621FFD3D9003A09C4 /* DeepRationManager.swift */,
+				F009458E22720A9C00093A07 /* MyStuffViewController.swift */,
+				F0094584227201FD00093A07 /* DeepRation */,
 				F05E533121E5485C00DAEA39 /* LaunchScreen.storyboard */,
 				F05E533421E5485C00DAEA39 /* Info.plist */,
 				F03614E421FFD2D6003A09C4 /* GoogleService-Info.plist */,
@@ -317,6 +348,7 @@
 				TargetAttributes = {
 					F05E532421E5485B00DAEA39 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -328,10 +360,12 @@
 					};
 					F05E533821E5485C00DAEA39 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = F05E532421E5485B00DAEA39;
 					};
 					F05E534321E5485C00DAEA39 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = F05E532421E5485B00DAEA39;
 					};
 				};
@@ -526,8 +560,13 @@
 				F003888E21EFD24F00B716EA /* HomeLoginViewController.swift in Sources */,
 				F05E537221E58F6100DAEA39 /* Extensions.swift in Sources */,
 				F05E537621E595C100DAEA39 /* JournalTableViewController.swift in Sources */,
+				F00945872272026D00093A07 /* ResourcesResponse.swift in Sources */,
 				F05B820821E9276600164F4F /* Journal.swift in Sources */,
+				F009458B227202C200093A07 /* DeepRationResponse.swift in Sources */,
+				F009458F22720A9C00093A07 /* MyStuffViewController.swift in Sources */,
+				F009458D2272093400093A07 /* ScoresResponse.swift in Sources */,
 				F05E537821E599C700DAEA39 /* JournalEntryViewController.swift in Sources */,
+				F00945892272029000093A07 /* Resource.swift in Sources */,
 				F05E536421E54DA800DAEA39 /* JournalEntry.swift in Sources */,
 				F05E532921E5485B00DAEA39 /* AppDelegate.swift in Sources */,
 			);
@@ -715,7 +754,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.charlesbethin.DeepRationJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -735,7 +774,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.charlesbethin.DeepRationJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -756,7 +795,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.charlesbethin.DeepRationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeepRation.app/DeepRation";
 			};
@@ -778,7 +817,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.charlesbethin.DeepRationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeepRation.app/DeepRation";
 			};
@@ -799,7 +838,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.charlesbethin.DeepRationUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DeepRation;
 			};
@@ -820,7 +859,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.charlesbethin.DeepRationUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DeepRation;
 			};
